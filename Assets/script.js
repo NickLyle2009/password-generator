@@ -1,17 +1,15 @@
 // Assignment Code
 //for the prompts-  when you want input, you have to go
 var generateBtn = document.querySelector("#generate");
-var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'z']
-var numerals = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-var symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', ';', ':', '>', '?', '/', '|']
-var yesOrNo = ['Y', 'N']
-var pwcharacters = []
+var uppercase = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+var lowercase = ['abcdefghijklmnopqrstuvwxz']
+var numerals = ['1234567890']
+var symbols = ['!@#$%^&*_-+=;:>?/|']
 
 
 function generatePassword() {
   var passwordRandom = ""
-
+  var pwcharacters = []
   console.log("this indicates that you clicked the generate button")
 
 
@@ -20,7 +18,7 @@ function generatePassword() {
   var uppercasechoice = confirm("Do you want uppercase characters in your password?")
 
   if (uppercasechoice) {
-    pwcharacters.concat(uppercase)
+    pwcharacters.push('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
   }
   var lowercasechoice = confirm("Do you want lowercase characters in your password? Y or N")
 
@@ -37,15 +35,19 @@ function generatePassword() {
 
   if (symbolchoice) {
     pwcharacters.push('!', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', ';', ':', '>', '?', '/', '|')
+  console.log(pwcharacters)
   };
 
   //if you dont choose character
 
-  if (pwcharacters.length < 1) {
+  if (
+    uppercasechoice === false &&
+    lowercasechoice === false &&
+    numeralchoice === false &&
+    symbolchoice === false
+  ) {
     alert("You have to choose at least one type of character to generate the password!");
-    return null
-    ;
-  };
+    return null}
 
   var passwordlength = prompt("how long do you want your password?  Please make it between 8 and 128 characters");
 
@@ -62,10 +64,6 @@ function generatePassword() {
     return null
    
   };
-
-
-
-
 
 
   //  a. ask for password length
